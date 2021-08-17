@@ -697,3 +697,110 @@ function custom1_setup() {
 }
 
 add_action('after_setup_theme', 'custom1_setup');
+
+// Register and enqueue scripts for slider
+function my_custom_scripts() {
+    
+    global $wp_query;
+    wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/js/script.js', array('jquery'), false, true);
+
+
+    wp_localize_script('custom-script', 'load_filter_params', array(
+      'ajax_url' => admin_url('admin-ajax.php'),
+      'current_page' => get_query_var('paged')?get_query_var('paged'): 1,
+      'max_page' => $wp_query->max_num_pages,
+    ));
+}
+
+add_action( 'wp_enqueue_scripts', 'my_custom_scripts' );
+
+//Filter button
+function load_filter() {
+	if($_POST['resourcetype']){
+	$args = array(
+		'post_type' => 'resources',
+		'posts_per_page'=> 6,
+		'paged' => $paged,
+		'tax_query' => array(
+		'relation' => 'AND', 
+			array(
+				'taxonomy' => 'cats',
+				'field' => 'slug',
+				'terms' => $_POST['resourcetype']
+			),
+		)
+	);
+	}
+	else {
+	$args = array(
+		'post_type' => 'resources',
+		'posts_per_page'=> 6
+	);
+	}
+
+	$query = new WP_Query($args);
+	if ($query->have_posts()) {
+		?>
+		<div class="resource-post">
+			<?php while ($query->have_posts()) { 
+				$query->the_post(); ?>
+				<article class="post">
+					<h2><?php the_title(); ?></h2>
+					<span><?php the_time('j F Y'); ?></span>
+					<figure class="post-fig">
+						<img src="<?php echo get_field('image')['url']; ?>" />
+					</figure>
+					<p><?php echo get_the_excerpt(); ?></p>
+					<a class="post-link" href="<?php the_permalink(); ?>">Read More</a>
+				</article>
+			<?php } ?>
+		</div>
+	<?php } else {
+	echo 'No posts found';
+	}
+	wp_reset_query(); 
+    wp_die();
+}
+
+add_action( 'wp_ajax_load_filter', 'load_filter' );
+add_action( 'wp_ajax_nopriv_load_filter', 'load_filter' );
+
+// Show More
+function load_more_filter() {
+    $paged = $_POST['page'] + 1;
+
+    if (!empty($paged)) {
+		$args = array(
+			'post_type' => 'resources',
+			'paged' => $paged,
+			'posts_per_page'=> 6,
+		);
+
+		$query = new WP_Query( $args );
+
+		if ($query->have_posts()) {
+			?>
+			<div class="resource-post">
+				<?php while ($query->have_posts()) { 
+					$query->the_post(); ?>
+					<article class="post">
+						<h2><?php the_title(); ?></h2>
+						<span><?php the_time('j F Y'); ?></span>
+						<figure class="post-fig">
+							<img src="<?php echo get_field('image')['url']; ?>" />
+						</figure>
+						<p><?php echo get_the_excerpt(); ?></p>
+						<a class="post-link" href="<?php the_permalink(); ?>">Read More</a>
+					</article>
+				<?php } ?>
+			</div>
+		<?php } else {
+		echo 'No posts found';
+		}
+		wp_reset_query();
+    }
+    wp_die();
+}
+
+add_action( 'wp_ajax_load_more_filter', 'load_more_filter' );
+add_action( 'wp_ajax_nopriv_load_more_filter', 'load_more_filter' );

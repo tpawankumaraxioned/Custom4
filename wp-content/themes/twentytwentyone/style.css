@@ -5980,8 +5980,13 @@ footer {
 /* ============================================================================ */
 /* Custom Style */
 /* Resource Posts */
+.filter_taxonomy {
+    width: 1000px;
+    margin: 0 auto;
+}
+
 .resource-post {
-	width: 80%;
+	width: 1020px;
 	margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -6019,8 +6024,54 @@ footer {
     padding: 0 0 10px 5px;
 }
 
+.load_more_resources {
+    margin: 10px 0 0 20%;
+}
+
 /* Single Post Resource */
 .resource-single-post {
     width: 80%;
     margin: 0 auto;
+}
+
+.site-nav ul {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: flex-start;
+}
+  
+.site-nav ul li {
+	list-style: none;	
+	margin-right: 20px;
+}
+
+/* Details page */
+.random_list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.random_list li {
+    flex-basis: 80%;
+}
+
+.random_post {
+    width: 100%;
+}
+
+.random-post-fig {
+    width: 60%;
+}
+
+.random-post-fig img {
+    width: 60%;
+}
+
+.random_post p {
+    font-size: 16px;
+    width: 80%;
+    margin: 10px 5px;
 }
