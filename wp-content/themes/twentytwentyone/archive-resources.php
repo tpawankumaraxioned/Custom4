@@ -32,9 +32,10 @@ get_header();
   );
 
   $query = new WP_Query($args);
-
+  $total = $query->found_posts;
   $pages = $query->max_num_pages;
 //   print_r($pages);
+//   echo "-".$total
 
 ?>
 <?php if ($query->have_posts()) {
