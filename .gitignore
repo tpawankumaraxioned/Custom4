@@ -19,4 +19,5 @@ wp-content/*
  
 # Ignore everything in the "themes" directory, except the themes you specify
 wp-content/themes/*
-!wp-content/themes/twentytwentyone/
+# !wp-content/themes/twentytwentyone/
+!wp-content/themes/customtheme/

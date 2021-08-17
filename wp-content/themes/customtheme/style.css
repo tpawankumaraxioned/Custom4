@@ -1,0 +1,111 @@
+/*
+Theme Name: Custom4
+Author: Unknown
+Author URI: https://google.com/
+Version: 1.0
+*/
+
+body {
+  color: #333;
+  background-color: #f0f8ff;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+/* Resource Posts */
+.filter_taxonomy {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.resource-post {
+  width: 1020px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post {
+  border: 1px solid #999;
+  padding: 5px;
+  margin: 10px 1% 10px 5px;
+  flex-basis: 30%;
+  width: 30%;
+}
+
+.post-fig {
+  width: 100%;
+  margin: 0;
+  display: inline-block;
+}
+
+.post-fig img {
+  width: 100%;
+  height: auto;
+}
+
+.post span {
+  font-size: 16px;
+}
+
+.post p {
+  padding: 10px 5px;
+  font-size: 18px;
+}
+
+.post-link {
+  font-size: 16px;
+  padding: 0 0 10px 5px;
+}
+
+.load_more_resources {
+  margin: 10px 0 0 20%;
+}
+
+/* Single Post Resource */
+.resource-single-post {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.site-nav ul {
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: flex-start;
+}
+
+.site-nav ul li {
+list-style: none;	
+margin-right: 20px;
+}
+
+/* Details page */
+.random_list {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.random_list li {
+  flex-basis: 80%;
+}
+
+.random_post {
+  width: 100%;
+}
+
+.random-post-fig {
+  width: 60%;
+}
+
+.random-post-fig img {
+  width: 60%;
+}
+
+.random_post p {
+  font-size: 16px;
+  width: 80%;
+  margin: 10px 5px;
+}
