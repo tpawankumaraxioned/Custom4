@@ -25,8 +25,14 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'twentytwentyone' ); ?></a>
 
-	<?php get_template_part( 'template-parts/header/site-header' ); ?>
+	<?php 
+		// get_template_part( 'template-parts/header/site-header' ); 
+	?>
+	<nav class="site-nav">
+        <?php $args = array('theme_location' => 'header primary') ?>
 
+        <?php wp_nav_menu($args); ?>
+	</nav>
 	<div id="content" class="site-content">
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main" role="main">

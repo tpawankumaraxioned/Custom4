@@ -677,3 +677,23 @@ function custom_taxonomy_resource() {
 }
 
 add_action('init', 'custom_taxonomy_resource');
+
+// excerpt word count length
+function custom_excerpth_length( ) {
+    return 50;
+}
+
+add_filter('excerpt_length', 'custom_excerpth_length', 999);
+
+// Adding Menu
+function custom1_setup() {
+
+    // Navigation Menu
+    register_nav_menus(array(
+      'header primary' =>__('Header Primary Menu'),
+      'footer primary' =>__('Footer Primary Menu'),
+    ));
+
+}
+
+add_action('after_setup_theme', 'custom1_setup');
