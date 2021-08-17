@@ -637,3 +637,43 @@ function twentytwentyone_add_ie_class() {
 	<?php
 }
 add_action( 'wp_footer', 'twentytwentyone_add_ie_class' );
+
+// custom post types
+function custom_post_type_resource() {
+    $args = array(
+      'labels' => array(
+        'name' => 'Resources',
+        'singular_name' => 'Resource',
+        'all_items' => 'All Resources', 
+      ),
+      'hierarchical' => false,
+      'menu_icon'   => 'dashicons-admin-post',
+      'public' => true,
+      'has_archive' => true,
+      'supports' => array('title', 'editor', 'thumbnail','comments', 'excerpt', 'page-attributes'),
+      // 'rewrite' => array('slug' => 'resources'),
+      
+    );
+    
+    register_post_type('resources', $args);
+}
+
+add_action('init', 'custom_post_type_resource');
+
+// custom taxonomy
+function custom_taxonomy_resource() {
+    $args = array(
+      'labels' => array(
+        'name' => 'Categorys',
+        'singular_name' => 'Category',
+      ),
+      'hierarchical' => true,
+      'public' => true,
+      'has_archive' => true,
+    );
+
+    register_taxonomy('cats', array('resources'), $args);
+
+}
+
+add_action('init', 'custom_taxonomy_resource');
