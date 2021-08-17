@@ -19,13 +19,13 @@ get_header();
     	<?php while ($query->have_posts()) { 
 			$query->the_post(); ?>
 			<article class="post">
-				<h2><a href="<?php the_permalink(); ?>" ><?php the_title(); ?></a></h2>
+				<h2><?php the_title(); ?></h2>
 				<span><?php the_time('j F Y'); ?></span>
 				<figure class="post-fig">
 					<img src="<?php echo get_field('image')['url']; ?>" />
 				</figure>
 				<p><?php echo get_the_excerpt(); ?></p>
-				
+				<a class="post-link" href="<?php the_permalink(); ?>">Read More</a>
 			</article>
 		<?php } ?>
     </div>

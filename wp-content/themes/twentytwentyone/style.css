@@ -5977,14 +5977,20 @@ footer {
 .is-IE .post-thumbnail .wp-post-image {
 	min-width: auto;
 }
-
+/* ============================================================================ */
+/* Custom Style */
+/* Resource Posts */
 .resource-post {
+	width: 80%;
+	margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
 }
 
 .post {
-    margin-right: 1%;
+    border: 1px solid #999;
+    padding: 5px;
+    margin: 10px 1% 10px 5px;
 	flex-basis: 30%;
 	width: 30%;
 }
@@ -6006,4 +6012,15 @@ footer {
 .post p {
     padding: 10px 5px;
     font-size: 18px;
+}
+
+.post-link {
+    font-size: 16px;
+    padding: 0 0 10px 5px;
+}
+
+/* Single Post Resource */
+.resource-single-post {
+    width: 80%;
+    margin: 0 auto;
 }
